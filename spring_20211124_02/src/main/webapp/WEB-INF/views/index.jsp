@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index jsp</title>
+<title>index_jsp</title>
 </head>
 <body>
-	<h2> index </h2>
+	<h3> index.jsp </h3>
+	<a href = "insertform"> 훈련생 등록 </a>
 	
-	<a href = "insert"> insert 바로가기❤❤ </a>
+	<!--  아래 링크를 클릭하면 DB에서 Select * from trainee를 하고 결과를 findAll.jsp에 출력 -->
+	<a href = "findAll">전체 목록 조회</a>
 </body>
 </html>

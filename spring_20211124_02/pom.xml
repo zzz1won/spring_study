@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.pjw</groupId>
-	<artifactId>work</artifactId>
-	<name>spring_20211124_01</name>
+	<artifactId>ex</artifactId>
+	<name>spring_20211124_02</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 <properties>

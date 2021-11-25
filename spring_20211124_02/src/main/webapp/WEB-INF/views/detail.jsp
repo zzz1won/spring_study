@@ -8,7 +8,14 @@
 </head>
 <body>
 
-<h2> 수강생등록이 완료되었습니다 </h2>
+<h2> detail </h2>
 
+	${trainee.t_number}
+	${trainee.t_name}
+	${trainee.t_age}
+	${trainee.t_phone}
+	${trainee.t_birth}
+	${trainee.t_gender}
+	${trainee.t_address}
 </body>
 </html>
