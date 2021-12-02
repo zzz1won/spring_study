@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="Board">
+ 	<insert id = "insert" parameterType = "board">
+ 		insert into board_table(b_writer, b_password, b_title, b_contents, b_hits, b_date)
+ 			values (#{b_writer}, #{b_password}, #{b_title}, #{b_contents}, #{b_hits}, now())
+ 			</insert>
+ 			
+ 			
+ 			<!-- findAll -->
+ 	<select id = "findAll" resultType="board">
+ 		select * from board_table
+ 	</select>
+ 	
+ 	<!-- detail -->
+ 	<select id = "detailNo" resultType="board">
+ 	select * from board_table where b_number = #{b_number}
+ 	<!-- update board_table set b_hits = b_hits+1 where b_number = #{b_number} -->
+ 	</select>
+ 			
+ 	<!-- 조회수증가 -->
+	<update id = "hits" parameterType="int">
+	update board_table set b_hits = b_hits+1 where b_number = #{b_number}
+	</update>	
+
+ 			
+ 			
+ </mapper>
