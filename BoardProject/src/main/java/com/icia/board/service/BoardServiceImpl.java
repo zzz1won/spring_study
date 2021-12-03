@@ -20,8 +20,7 @@
  * stub return null; }
  * 
  * @Override public BoardDTO detailNo(long b_number) { // TODO Auto-generated
- * method stub return null; }
+ * method stub return null;
  * 
  * }
- * 
  */

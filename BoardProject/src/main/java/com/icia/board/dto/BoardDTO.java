@@ -1,6 +1,6 @@
 package com.icia.board.dto;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 
@@ -13,7 +13,8 @@ public class BoardDTO {
 	private String b_title;
 	private String b_contents;
 	private int b_hits;
-	private Date b_date;
+	/* private Date b_date; */
+	private Timestamp b_date; //시간까지 보이게하려면!
 
 	
 }

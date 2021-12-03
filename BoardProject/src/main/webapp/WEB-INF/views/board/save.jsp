@@ -13,16 +13,17 @@ display : block;
 </head>
 <body>
 
-	<h2> 1201작업, 글쓰기 </h2>
-	<form action = "insert" method = POST>
+	<h2> save.jsp </h2>
+	<h2> 글쓰기 </h2>
+	<form action = "/board/save" method = POST>
 	작성자: <input type = "text" name = "b_writer">
 	글비밀번호: <input type = "text" name = "b_password">
 	제목: <input type = "text" name = "b_title">
-	내용: <input type = "text" name = "b_contents">
+	<!-- 내용: <input type = "text" name = "b_contents"> -->
+	내용: <textarea name="b_contents" rows="5"></textarea>
 	
 	<input type = "submit" value = "전송">
-	<!-- <button type="button" class="btn btn-outline-success"> 업로드 </button> -->
+	
 	</form>
-
 </body>
 </html>
