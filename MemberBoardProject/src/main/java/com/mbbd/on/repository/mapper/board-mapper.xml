@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="Board">
+ 
+ 	<!-- 글쓰기  -->
+ 	<insert id="save" parameterType="board">
+ 	insert into board_table(b_title, b_writer, b_contents, b_hits, b_date, b_filename)
+ 		values (#{b_title}, #{b_writer}, #{b_contents}, #{b_hits}, now(), #{b_filename})
+ 	</insert>
+ 	
+ 	<!-- 글목록조회 -->
+ 	<select id="boardAll" resultType="board">
+ 	select * from board_table
+ 	</select>
+ 	
+ 	<!-- 검색기능 , 선생님이 주신 두번째 방식-->
+ 	<select id="search" parameterType="java.util.HashMap" resultType="board">
+		select * from board_table 			
+		<include refid="sear"></include>
+	</select>
+	
+	<sql id="sear">
+		<choose>
+			<when test="type=='b_title'">
+				where b_title like concat('%', #{word}, '%') 
+			</when>
+			<when test="type=='b_writer'">
+				where b_writer like concat('%', #{word}, '%') 
+			</when>
+		</choose>
+	</sql>
+ 	
+ 	
+ 	<!-- 페이징기능, 선생님이 주심! -->
+ 	<select id="pagingList" parameterType="int" resultType="board">
+	select * from board_table order by b_number desc limit #{pagingStart}, 5
+	</select>
+	
+	<select id="pagingList1" parameterType="java.util.HashMap" resultType="board">
+		select * from board_table order by b_number desc limit #{start}, #{limit}
+	</select>
+	
+	<select id="count" resultType="int">         
+		select count(b_number) from board_table
+	</select>
+ 	
+
+	<!-- 조회수 올리기 -->
+ 	<update id="hits" parameterType="long">
+ 	update board_table set b_hits = b_hits+1 where b_number = #{b_number}
+ 	</update>
+ 	
+ 	<!-- 글 상세보기 -->
+ 	<select id="detailNo" resultType="board">
+ 	select * from board_table where b_number = #{b_number}
+ 	</select>
+ 	
+ 	
+ 	<!-- 글 삭제 보류  -->
+ 	<select id ="delete" parameterType="long">
+ 		delete from board_table where b_number = #{b_number}
+ 	</select>
+ 	
+
+	<!-- 글 수정 처리 -->
+	<update id="bupdate"  parameterType="board">
+		update board_table set b_title = #{b_title}, b_contents = #{b_contents} where b_number = #{b_number}
+	</update>
+ 	
+ 	
+ 	
+ 	
+ </mapper>
+  

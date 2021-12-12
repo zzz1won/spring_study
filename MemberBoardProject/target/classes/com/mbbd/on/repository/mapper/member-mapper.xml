@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="member"> 
+ 	<!-- 회원가입 -->
+ 	<insert id="save" parameterType="member">
+ 		insert into member_table (m_id, m_pw, m_name, m_email, m_phone, m_filename) 
+ 			values(#{m_id}, #{m_pw}, #{m_name}, #{m_email}, #{m_phone}, #{m_filename})
+ 	</insert>
+ 	
+ 	<!-- 왜 스트링으로 받는건지 궁금해 ^_^  -->
+ 	<select id = "idDuplicate" parameterType="String" resultType="String">
+ 	select m_id from member_table where m_id = #{m_id}
+ 	</select>
+ 	
+ 	<!-- 로그인 -->
+ 	<select id = "login" resultType = "member">
+ 	select * from member_table where m_id = #{m_id} and m_pw = #{m_pw}
+ 	</select> 
+ 	
+ 	<!-- 회원리스트출력 -->
+ 	<select id="memberAll" resultType = "member">
+ 	select * from member_table
+ 	</select>
+ 	
+ 	<!-- 마이페이지에서 수정 -->
+ 	<select id = "mypage" parameterType="long" resultType="member">
+ 	select*from member_table where m_number = #{m_number} 
+ 	</select>
+ 	 	
+	<update id = "update" parameterType="member">
+	update member_table set m_pw = #{m_pw}, m_phone = #{m_phone}, m_email = #{m_email} where m_number = #{m_number}
+	</update>
+ 	
+ 	<update id = "mupdate" parameterType="member">
+	update member_table set m_pw = #{m_pw}, m_phone = #{m_phone}, m_email = #{m_email} where m_number = #{m_number}
+	</update>
+	
+	<!-- 1211 memberAll에서 delete기능 -->
+	<select id = "delete" parameterType = "long">
+	delete from member_table where m_number = #{m_number}
+	</select>
+	
+ </mapper>
